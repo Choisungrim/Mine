@@ -1,0 +1,217 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+:root {
+	--vivid-sky-blue: #3cf;
+	--manatee: #9c9fab;
+	--cultured: #f4f4f6;
+	--eerie-black: #1c1d21;
+	--light-gray: #d3d4d9;
+	--black-coral: #676b79;
+	--han-purple: #33f;
+	--ghost-white: #fbfbff;
+	--lavender-web: #e7e7ff;
+	--white: #fff;
+	--rusty-red: #de3c4b;
+}
+
+* {
+	scroll-behavior: smooth;
+}
+
+#container > header {
+	height: 57rem;
+	position: relative;
+	background-image: url(../image/main_banner.jpg);
+	background-size: cover;
+}
+
+#container > header > .nav {
+	width: 100%;
+	background-color: rgba(251, 251, 255, 0.5);
+	position: fixed;
+	top: 0%;
+	z-index: 999;
+	transition: all 0.3s ease-in-out;
+	border-bottom: 1px solid #d3d4d9;
+}
+
+#container > header > .nav_active {
+	background-color: var(--white);
+}
+
+#container > header > .nav > nav {
+	width: 130rem;
+	margin: 0 auto;
+	height: 9rem;
+	display: flex;
+	align-items: center;
+}
+
+.nav_left {
+	width: 65rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav_left > h1 {
+	display: flex;
+	align-items: center;
+	font-size: 2rem;
+}
+
+.nav_left > h1 > img {
+	width: 6.7rem;
+	height: 3.4rem;
+	object-fit: contain;
+}
+
+.nav_left > h1 > #mine {
+	margin-left: 1.3rem;
+	color: var(--han-purple);
+	font-weight: bold;
+}
+
+.nav_left > h1 > #mine > span {
+	font-weight: normal;
+	font-size: 1.9rem;
+	color: var(--black-coral);
+}
+
+.nav_left > ul {
+	display: flex;
+}
+
+.nav_left > ul > li {
+	margin-left: 8rem;
+}
+
+.nav_left > ul > li > a {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: var(--black-coral);
+}
+
+.nav_right {
+	width: 65rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.nav_right > span {
+	margin-left: 6.1rem;
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+
+.nav_right > img {
+	width: 3.2rem;
+	height: 3.2rem;
+	margin-left: 5rem;
+	cursor: pointer;
+}
+
+.nav_right > #join {
+	padding: 1.2rem 1.5rem;
+	background-color: var(--han-purple);
+	border-radius: 1rem;
+}
+
+.nav_right > #join > a {
+	color: #fff;
+}
+
+/* main_banner (메인배너)*/
+
+header > .main_banner {
+	width: 130rem;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+header > .main_banner > .banner_text {
+	height: 57rem;
+	margin-top: 18rem;
+}
+
+.main_banner > .banner_text > p,
+h1 {
+	font-size: 4.8rem;
+	color: var(--eerie-black);
+}
+
+.main_banner > .banner_text > h1 {
+	font-weight: bold;
+}
+
+.main_banner > .banner_text > #hashtag {
+	margin-top: 3rem;
+	font-size: 2.2rem;
+	font-weight: bold;
+}
+
+.main_banner > .banner_text > #hashtag > a {
+	color: var(--white);
+}
+
+.banner_text > #hashtag > a > #hash_style {
+	color: inherit;
+	font-weight: 400;
+}
+
+/* category (카테고리) */
+header > .category {
+	position: absolute;
+	bottom: -10rem;
+	left: calc(50% - 65rem);
+	width: 130rem;
+	background-color: var(--white);
+	box-shadow: 0 0.5rem 2rem rgba(28, 29, 33, 0.04);
+	border-radius: 1rem;
+	padding: 0 0.5rem;
+}
+
+header > .category > ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 18.8rem;
+}
+
+header > .category > ul li {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.category > ul li > .arrow {
+	background-color: rgba(0, 0, 137, 0.04);
+	opacity: 0.6;
+	border-radius: 50%;
+}
+
+.category > ul li > .arrow_left {
+	margin-left: 3rem;
+	transform: rotate(180deg);
+}
+
+.category > ul li > .arrow_right {
+	margin-right: 3rem;
+}
+
+.category > ul li > span {
+	margin-top: 1rem;
+	font-size: 1.8rem;
+	color: var(--eerie-black);
+	font-weight: 500;
+}
+
+.category > ul li > span.category_active {
+	color: var(--han-purple);
+	font-weight: bold;
+}
