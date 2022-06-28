@@ -1,7 +1,5 @@
 package com.influencer.model;
 
-import java.util.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,12 +15,17 @@ import service.YtubeService;
 import vo.MemberVO;
 import vo.YtubeVO;
 
+/**
+ * @author yujunjae
+ * @since 22-06-28
+ */
+
 @Controller
 public class RankingController {
 	@Autowired
-	YtubeService yservice;
+	YtubeService Yservice;
 	@Autowired
-	MylistService myservice;
+	MylistService MYservice;
 	
 	//rank 페이지 이동시 상위 3개 와 모든 인플루언서의 obj (틀을 그렇게 짜서 이렇게 했어요)
 	@RequestMapping(value = "/rankf")
@@ -30,10 +33,10 @@ public class RankingController {
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
-			mv.addObject("allytuber",yservice.selectList());
-			mv.addObject("oytuber",yservice.selectList().get(0));
-			mv.addObject("tytuber",yservice.selectList().get(1));
-			mv.addObject("hytuber",yservice.selectList().get(2));
+			mv.addObject("allytuber",Yservice.selectList());
+			mv.addObject("oytuber",Yservice.selectList().get(0));
+			mv.addObject("tytuber",Yservice.selectList().get(1));
+			mv.addObject("hytuber",Yservice.selectList().get(2));
 			mv.setViewName("ranking/ranking");
 		}
 		else
@@ -49,8 +52,8 @@ public class RankingController {
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
-			mv.addObject("category",yservice.category(value));
-			mv.addObject("mylist",myservice.selectList((String)session.getAttribute("Login_Id")));
+			mv.addObject("category",Yservice.category(value));
+			mv.addObject("mylist",MYservice.selectList((String)session.getAttribute("Login_Id")));
 			mv.setViewName("jsonView");
 		}else
 			mv.setViewName("member/login");
@@ -63,8 +66,8 @@ public class RankingController {
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
-			mv.addObject("allytuber",yservice.selectList());
-			mv.addObject("mylist",myservice.selectList((String)session.getAttribute("Login_Id")));
+			mv.addObject("allytuber",Yservice.selectList());
+			mv.addObject("mylist",MYservice.selectList((String)session.getAttribute("Login_Id")));
 			mv.setViewName("jsonView");
 		}
 		else

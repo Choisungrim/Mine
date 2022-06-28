@@ -23,6 +23,10 @@ public class MylistServiceimpl implements MylistService {
 	public int myinsert(HashMap<String,String> map) {
 		return mapper.myinsert(map);
 	}
+	@Override
+	public int mydelete(HashMap<String, String> map) {
+		return mapper.mydelete(map);
+	}
 	
 }
 

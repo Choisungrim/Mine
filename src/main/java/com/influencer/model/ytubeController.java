@@ -13,14 +13,14 @@ import service.YtubeService;
 import vo.YtubeVO;
 
 /**
- * 2022 - 05 - 26
  * @author ChoiSungRim
- * ytube insert DataBase
- * */
+ * @since 22-05-28
+ */
+
 @Controller
 public class ytubeController {
 	@Autowired
-	YtubeService Service;
+	YtubeService Yservice;
 	
 	//Database 바로 저장.
 	@RequestMapping(value = "/ytube")
@@ -34,7 +34,7 @@ public class ytubeController {
 	public ModelAndView input1 (HttpServletRequest request,ModelAndView mv,YtubeVO vo){
 		
 		if(vo!=null) {
-			Service.insert(vo);
+			Yservice.insert(vo);
 		}
 		return mv;
 	}

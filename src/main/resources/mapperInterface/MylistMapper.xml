@@ -13,4 +13,7 @@
   	values(#{id},#{name})
   	</insert>
   	
+  	<delete id="mydelete">
+  	delete from mylist where id = #{id} and name = #{name}
+  	</delete>
   </mapper>

@@ -1,5 +1,6 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -36,5 +37,18 @@ public class YtubeServiceimpl implements YtubeService{
 	@Override
 	public List<YtubeVO> detail(String string) {
 		return mapper.detail(string);
+	}
+	@Override
+	public List<YtubeVO> interlist(HashMap<String,String> map) {
+		return mapper.interlist(map);
+	}
+	
+	@Override
+	public int countdown(String name) {
+		return mapper.countdown(name);
+	}
+	@Override
+	public int countup(String name) {
+		return mapper.countup(name);
 	}
 }

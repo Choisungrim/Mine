@@ -9,4 +9,6 @@ import vo.YtubeVO;
 public interface MylistMapper {
 	List<MylistVO> selectList(String id);
 	int myinsert (HashMap<String,String> map);
+	int mydelete (HashMap<String,String> map);
+	
 }

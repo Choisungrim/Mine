@@ -25,17 +25,30 @@ import vo.FirstnameVO;
 import vo.MemberVO;
 import vo.YtubeVO;
 
+/**
+ * @author ChoiSungRim, yujunjae
+ * @since 22-05-28
+ */
+
 @Controller
 public class MemberController{
 	List<YtubeVO> list = new ArrayList<YtubeVO>();
 	@Autowired
-	MemberService Service;
+	MemberService Mservice;
 	@Autowired
 	FirstnameService Fservice;
 	@Autowired
 	YtubeService Yservice;
 
 	
+	//interest
+	@RequestMapping(value = "/interestCheck",method = RequestMethod.POST)
+	public ModelAndView interestCheck(ModelAndView mv) {
+		mv.setViewName("member/interestForm");
+		return mv;
+	} 
+		
+	// chbox값(관심사)을 받아 member테이블에 업데이트
 	int cnt = 0 ;
 	@RequestMapping(value = "/interest",method = RequestMethod.POST)
 	@ResponseBody
@@ -55,18 +68,12 @@ public class MemberController{
 				interest +=chbox.get(i);
 		}
 		aa.put("interest",interest);
-		Service.update(aa);
+		Mservice.update(aa);
 		mv.setViewName("/");
 		return mv;
 		
 	}
 	
-	@RequestMapping(value = "/interestCheck",method = RequestMethod.POST)
-	public ModelAndView interestCheck(ModelAndView mv) {
-		mv.setViewName("member/interestForm");
-		return mv;
-	} 
-
 	//login
 	@RequestMapping(value = "/loginf")
 	public ModelAndView loginf(ModelAndView mv) {
@@ -77,7 +84,7 @@ public class MemberController{
 	@ResponseBody
 	public ModelAndView login(ModelAndView mv, HttpServletRequest request, RedirectAttributes attr, MemberVO vo, YtubeVO vo1) {
 		String password = request.getParameter("pw"); // 입력한 비밀번호
-		vo = Service.selectOne(vo); // vo에 저장된 비밀번호
+		vo = Mservice.selectOne(vo); // vo에 저장된 비밀번호
 		int i = 1; // 전달할 namespace
 		int listNum = 0; // 불러올 listNumber
 		
@@ -96,9 +103,16 @@ public class MemberController{
 					}
 					//Interest에 따른 Ytube Image 출력 
 					do {
+						String subscribe = imglist.get(listNum).getSubscribe();
 						session.setAttribute("img"+i, imglist.get(listNum).getImage());
 						session.setAttribute("name"+i, imglist.get(listNum).getName());
-						session.setAttribute("subs"+i, imglist.get(listNum).getSubscribe());
+						
+						if(subscribe.substring(subscribe.length()-4).equals('0'))
+				            session.setAttribute("subs"+i, subscribe.substring(0,3));
+				        else if(subscribe.substring(subscribe.length()-5).equals('0'))
+				            session.setAttribute("subs"+i, subscribe.substring(0,4));
+				        else
+				            session.setAttribute("subs"+i, subscribe.substring(0,2));
 						i++; 
 						listNum++;
 					}while (i <= 3);
@@ -143,7 +157,7 @@ public class MemberController{
 		map.put("birth",birth);
 		map.put("color",color);
 
-		MemberVO id = Service.getAll(map);
+		MemberVO id = Mservice.getAll(map);
 		mv.addObject(id.getId()); // 아이디찾기
 		mv.setViewName("member/idGet");
 		return mv;
@@ -159,7 +173,7 @@ public class MemberController{
 		map.put("birth",birth);
 		map.put("color",color);
 
-		MemberVO password = Service.getAll(map);
+		MemberVO password = Mservice.getAll(map);
 		mv.addObject(password.getPassword()); // 비밀번호찾기
 		mv.setViewName("member/pwGet");
 		return mv;
@@ -182,7 +196,7 @@ public class MemberController{
 		HttpSession session = request.getSession();
 		vo.setEmail(vo.getEmail().replace("%40","@"));
 		List<FirstnameVO>nickname = Fservice.givenick();
-		if(Service.insert(vo)>0) {
+		if(Mservice.insert(vo)>0) {
 			Fservice.countUpdate(nickname.get(cnt).getNick_name());
 			session.setAttribute("id",vo.getId());
 			mv.addObject("result",200);
@@ -195,10 +209,11 @@ public class MemberController{
 		
 	}
 	
+	// join idCheck
 	@RequestMapping(value="/idCheck",method=RequestMethod.POST)
 	@ResponseBody
 	public int idCheck(HttpServletRequest req,MemberVO vo) throws Exception{
-		int result = Service.idCheck(vo.getId());//중복아이디 있으면 1, 없으면 0
+		int result = Mservice.idCheck(vo.getId());//중복아이디 있으면 1, 없으면 0
 		return result;
 			
 	}

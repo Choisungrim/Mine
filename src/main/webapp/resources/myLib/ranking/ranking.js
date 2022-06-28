@@ -68,7 +68,6 @@ $('.category_scroll>ul>li').click(function () {
 			data:{value : value},
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			success : (category) =>{
-				console.log(category)
 					let b = `
                 <div id="rank_2" class="rank_side">
                     <span class="hidden">2위</span>
@@ -193,8 +192,12 @@ $('.category_scroll>ul>li').click(function () {
 });
 
 // $().html 에 생기는 요소
+
+$('#cc').on("click",click());
+
+
 function click(){
-const count = document.querySelectorAll('.mine > a > img');
+var count = document.querySelectorAll('.mine > a > img');
 
 count.forEach(el=>{
 	el.onclick=(e)=>{
@@ -202,45 +205,6 @@ count.forEach(el=>{
 		let nodes = [...e.target.parentElement.children];
 	    let index = nodes.indexOf(e.target);
 		let insertobj = e.path[3].children[0].innerText.split('\n')
-		let obj = nodes[1].getAttribute('src')
-		if(obj == "resources/image/ic_heart-0.svg"){
-			$.ajax({
-				url:'myinsert',
-				type:'post',
-				data:{insertobj : insertobj[0]},
-				success :(success)=>{
-					alert('찜하기가 되었습니다.');		
-				}
-			})			
-			return nodes[1].setAttribute('src',"resources/image/ic_heart-1.svg")
-		}
-		else{
-			$.ajax({
-				url:'delete',
-				type:'post',
-				data:{insertobj : insertobj[0]},
-				success :(success)=>{
-					alert('찜하기가 되었습니다.');		
-				}
-			})		
-			alert('찜하기를 취소하였습니다.')
-			return nodes[1].setAttribute('src',"resources/image/ic_heart-0.svg")
-		}
-		
-	}
-})
-}
-
-// 전체페이지에 적용되는 요소.
-const count = document.querySelectorAll('.mine > a > img');
-
-count.forEach(el=>{
-	el.onclick=(e)=>{
-	e.preventDefault();
-		let nodes = [...e.target.parentElement.children];
-	    let index = nodes.indexOf(e.target);
-		let insertobj = e.path[3].children[0].innerText.split('\n')
-		console.log(insertobj[0])
 		let obj = nodes[1].getAttribute('src')
 		if(obj == "resources/image/ic_heart-0.svg"){
 			$.ajax({
@@ -259,18 +223,17 @@ count.forEach(el=>{
 				type:'post',
 				data:{insertobj : insertobj[0]},
 				success :(success)=>{
-					alert('찜하기를 취소하였습니다.')		
+				alert('찜하기를 취소하였습니다.')
 				}
 			})		
-			
 			return nodes[1].setAttribute('src',"resources/image/ic_heart-0.svg")
 		}
 		
 	}
 })
+}
 
-
-
+// 전체페이지에 적용되는 요소.
 
 // 윤화씨 코드
 //$('.mine').click(() => {
