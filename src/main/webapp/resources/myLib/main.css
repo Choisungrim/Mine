@@ -16,6 +16,7 @@
 /* now_popularity (지금 인기있는 인플루언서) */
 
 body {
+	overflow:hidden;
 	background-color: var(--ghost-white);
 }
 

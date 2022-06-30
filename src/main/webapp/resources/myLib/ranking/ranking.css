@@ -59,15 +59,15 @@ footer {
 
 .category_wrap>ul>li>.arrow_left {
     position: absolute;
-    top: 20%;
-    left: 11%;
+    top: 50%;
+    left:-10px;
     transform: rotate(180deg);
 }
 
 .category_wrap>ul>li>.arrow_right {
     position: absolute;
-    top: 18%;
-    right: 11%;
+    top: 50%;
+    right: -10px;
 }
 
 .category_scroll>ul {
@@ -75,7 +75,7 @@ footer {
     height: 5.6rem;
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    /* gap: 2rem; */
 }
 
 .category_scroll>ul>.btn20px {

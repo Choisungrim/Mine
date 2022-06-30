@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="resources/myLib/header.css" />
 		<link rel="stylesheet" href="resources/myLib/main.css" />
 		<link rel="stylesheet" href="resources/myLib/hamburger.css" />
+		<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 	</head>
 	<body>
 		<div id="container">
@@ -89,17 +90,23 @@
 						</p>
 					</div>
 				</div>
-				<div class="category">
-					<ul>
-						<li><img src="resources/image/ic_arrow.svg" alt="왼쪽 이동" class="arrow arrow_left" /></li>
-						<li><img src="resources/image/traning.svg" alt="" /><span class="category_active">운동</span></li>
-						<li><img src="resources/image/travel.svg" alt="" /><span>여행</span></li>
-						<li><img src="resources/image/beauty.svg" alt="" /><span>뷰티</span></li>
-						<li><img src="resources/image/fashion.svg" alt="" /><span>패션</span></li>
-						<li><img src="resources/image/food.svg" alt="" /><span>먹방</span></li>
-						<li><img src="resources/image/cook.svg" alt="" /><span>요리</span></li>
-						<li><img src="resources/image/ic_arrow.svg" alt="오른쪽 이동" class="arrow arrow_right" /></li>
+				<div class="swiper2 category">
+					<div class="swiper-button-prev"><img src="resources/image/ic_arrow.svg" alt="왼쪽 이동" class="arrow arrow_left" /></div>
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide"><img src="resources/image/traning.svg" alt="" /><span class="category_active">운동</span></li>
+						<li class="swiper-slide"><img src="resources/image/travel.svg" alt="" /><span>여행</span></li>
+						<li class="swiper-slide"><img src="resources/image/beauty.svg" alt="" /><span>뷰티</span></li>
+						<li class="swiper-slide"><img src="resources/image/fashion.svg" alt="" /><span>패션</span></li>
+						<li class="swiper-slide"><img src="resources/image/food.svg" alt="" /><span>먹방</span></li>
+						<li class="swiper-slide"><img src="resources/image/cook.svg" alt="" /><span>요리</span></li>
+						<li class="swiper-slide"><img src="resources/image/game.svg" alt="" /><span>게임</span></li>
+						<li class="swiper-slide"><img src="resources/image/music.svg" alt="" /><span>음악</span></li>
+						<li class="swiper-slide"><img src="resources/image/develop.svg" alt="" /><span>개발</span></li>
+						<li class="swiper-slide"><img src="resources/image/animal.svg" alt="" /><span>동물</span></li>
+						<li class="swiper-slide"><img src="resources/image/stock.svg" alt="" /><span>주식</span></li>
+						<li class="swiper-slide"><img src="resources/image/quiz.svg" alt="" /><span>퀴즈</span></li>
 					</ul>
+					<div class="swiper-button-next"><img src="resources/image/ic_arrow.svg" alt="오른쪽 이동" class="arrow arrow_right" /></div>
 				</div>
 			</header>
 			<main>
@@ -297,5 +304,25 @@
 		</footer>
 		<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 		<script src="resources/myLib/header.js"></script>
+		<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	    <script>
+	    	// 배너 swiper
+	    	const swiper1 = new Swiper('.swiper1', {
+	    		
+	    	});
+	        // 카테고리 swiper
+	    	const swiper2 = new Swiper('.swiper2', {
+	            slidesPerView: 6,
+	            loop: false,
+	            spaceBetween: 20,
+					        
+	            // Navigation arrows
+	            navigation: {
+	            nextEl: '.swiper-button-next',
+	            prevEl: '.swiper-button-prev',
+	            },
+	        
+	        });
+	    </script>
 	</body>
 </html>
