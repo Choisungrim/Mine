@@ -54,13 +54,13 @@
 	order by subscribe desc
   </select>
   	
-  <select id="category" resultType = "vo.YtubeVO">
+  <select id="intera" resultType = "vo.YtubeVO">
   	select row_number()over(order by good desc) seq,
   	a.name name, a.subscribe, a.introduce, b.job, a.image,
   	b.youtube_addr, b.insta_addr, b.default_addr, a.good
 	from ytube a join address b
 	on a.name= b.name
-	where job = #{interest}
+	where trim(job) = #{interest}
 	order by seq
   </select>
   </mapper>

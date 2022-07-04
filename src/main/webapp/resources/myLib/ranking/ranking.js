@@ -31,6 +31,7 @@ $('#all').click(function () {
 			url:"rankf",
 			type:"get",
 			success:(allytuber)=>{
+				console.log(allytuber)
 			$('body').html(allytuber)
 			}
 		})
@@ -66,24 +67,29 @@ $('.category_scroll>ul>li').click(function () {
 			url:"category",
 			type:"get",
 			data:{value : value},
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			success : (category) =>{
+			async : "true",
+			cache :"false",
+			datatype:"json",
+			contenttype:"json",
+			success : (result) =>{
+				console.log(value)
+				console.log(result)
 					let b = `
                 <div id="rank_2" class="rank_side">
                     <span class="hidden">2위</span>
                     <div class="rank_header">
-                        <img src="${category.category[1].image}" alt="프로필사진">
-                        <div class="rank_num">${category.category[1].seq}</div>
+                        <img src="${result.intera[1].image}" alt="프로필사진">
+                        <div class="rank_num">${result.intera[1].seq}</div>
                     </div>
                     <div class="details">
-                        <span>${category.category[1].name}</span>
+                        <span>${result.intera[1].name}</span>
                         <div class="mine_num">
                             <span class="hidden">찜 개수</span>
                             <img src="resources/image/ic_heart-1.svg"> 
-                            <span>${category.category[1].good}</span>
+                            <span>${result.intera[1].good}</span>
                         </div>
                         <div class="hashtag">
-                            <span>#${category.category[1].job}</span>
+                            <span>#${result.intera[1].job}</span>
                             <span>#운동</span>
                             <span>#20대_인기</span>
                         </div>
@@ -92,18 +98,18 @@ $('.category_scroll>ul>li').click(function () {
                 <div id="rank_1" class="rank_main">
                     <span class="hidden">1위</span>
                     <div class="rank_header">
-                        <img src="${category.category[0].image}" alt="프로필사진">
-                        <div class="rank_num first">${category.category[0].seq}</div>
+                        <img src="${result.intera[0].image}" alt="프로필사진">
+                        <div class="rank_num first">${result.intera[0].seq}</div>
                     </div>
                     <div class="details">
-                        <span>${category.category[0].name}</span>
+                        <span>${result.intera[0].name}</span>
                         <div class="mine_num">
                             <span class="hidden">찜 개수</span>
                             <img src="resources/image/ic_heart-1.svg">
-                            <span>${category.category[0].good}</span>
+                            <span>${result.intera[0].good}</span>
                         </div>
                         <div class="hashtag">
-                            <span>#${category.category[0].job}</span>
+                            <span>#${result.intera[0].job}</span>
                             <span>#운동</span>
                             <span>#20대_인기</span>
                         </div>
@@ -112,18 +118,18 @@ $('.category_scroll>ul>li').click(function () {
                 <div id="rank_3" class="rank_side">
                     <span class="hidden">3위</span>
                     <div class="rank_header">
-                        <img src="${category.category[2].image}" alt="프로필사진">
-                        <div class="rank_num">${category.category[2].seq}</div>
+                        <img src="${result.intera[2].image}" alt="프로필사진">
+                        <div class="rank_num">${result.intera[2].seq}</div>
                     </div>
                     <div class="details">
-                        <span>${category.category[2].name}</span>
+                        <span>${result.intera[2].name}</span>
                         <div class="mine_num">
                             <span class="hidden">찜 개수</span>
                             <img src="resources/image/ic_heart-1.svg">
-                            <span>${category.category[2].good}</span>
+                            <span>${result.intera[2].good}</span>
                         </div>
                         <div class="hashtag">
-                            <span>#${category.category[2].job}</span>
+                            <span>#${result.intera[2].job}</span>
                             <span>#운동</span>
                             <span>#20대_인기</span>
                         </div>
@@ -133,24 +139,24 @@ $('.category_scroll>ul>li').click(function () {
 				`;
 				$('#top3').html($('#top3').html()+b);
 				
-			for(let i =3; i<category.category.length;i++){
+			for(let i =3; i<result.intera.length;i++){
 				let a =`
 				<div class="list_item">
-                <span>${category.category[i].seq}</span>
-                <div id="rank_${category.category[i].seq}"><!-- id = rank_(숫자)-->
+                <span>${result.intera[i].seq}</span>
+                <div id="rank_${result.intera[i].seq}"><!-- id = rank_(숫자)-->
                     <div class="influencer_profile">
-                        <img src="${category.category[i].image}" alt="프로필사진">
+                        <img src="${result.intera[i].image}" alt="프로필사진">
                         <div class="details">
                             <div class="desc">
-                                <span>${category.category[i].name}</span>
+                                <span>${result.intera[i].name}</span>
                                 <div class="mine_num">
                                     <span class="hidden">찜 개수</span>
                                     <img src="resources/image/ic_heart-1.svg">
-                                    <span>${category.category[i].good }</span>
+                                    <span>${result.intera[i].good }</span>
                                 </div>
                             </div>
                             <div class="hashtag">
-                                <span>${category.category[i].job}</span>
+                                <span>${result.intera[i].job}</span>
                                 <span>#태그2</span>
                                 <span>#연령_인기</span>
                             </div>
@@ -174,8 +180,8 @@ $('.category_scroll>ul>li').click(function () {
 			
 			//카테고리를 새롭게 부르기때문에 재할당.
 			let heart = $('.mine>a>img').attr('src',(index,heart)=>{})
-			let a = category.mylist;
-			for(let i =0; i<category.mylist.length;i++){
+			let a = result.mylist;
+			for(let i =0; i<result.mylist.length;i++){
 			let mylistname = a[i].name;
 				let text1=$('.desc > span').text(el=>{})
 				for(let j =0;j<text1.length;j++){
@@ -186,7 +192,7 @@ $('.category_scroll>ul>li').click(function () {
 				}
 			}
 			click();
-			}
+			},
 		})
 		
 });

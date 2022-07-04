@@ -31,8 +31,10 @@ public class YtubeServiceimpl implements YtubeService{
 	}
 	
 	@Override
-	public List<YtubeVO> category(String interest) {
-		return mapper.category(interest);
+	public List<YtubeVO> intera(String interest) {
+		System.out.println("service" + interest);
+		System.out.println(mapper.intera(interest));
+		return mapper.intera(interest);
 	}
 	@Override
 	public List<YtubeVO> detail(String string) {

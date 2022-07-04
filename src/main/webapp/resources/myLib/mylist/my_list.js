@@ -19,9 +19,14 @@ value.forEach(el=>{
 		$.ajax({
 			url:"interlist",
 			type:"get",
+			async : "true",
+			cache :"false",
+			datatype:"json",
+			contenttype:"json",
 			data:{val : val},
 			success:(list)=>{
 				result.innerHTML = '';
+				console.log(list)
 				if(list.list.length>=1){
 					for(let i = 0; i<list.list.length; i++){
 					var card = `<div class="card">

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -85,11 +86,8 @@ public class MemberController{
 	public ModelAndView login(ModelAndView mv, HttpServletRequest request, RedirectAttributes attr, MemberVO vo, YtubeVO vo1) {
 		String password = request.getParameter("pw"); // 입력한 비밀번호
 		vo = Mservice.selectOne(vo); // vo에 저장된 비밀번호
-		int i = 1; // 전달할 namespace
-		int listNum = 0; // 불러올 listNumber
 		
 		if(vo != null) {
-			List<YtubeVO> imglist = Yservice.imgOne(vo.getInterest());
 			if(vo.getPassword().equals(password)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("Login_Id", vo.getId());
@@ -97,44 +95,35 @@ public class MemberController{
 				session.setAttribute("Login_Email", vo.getEmail());
 				if(vo.getInterest() != null) {
 					session.setAttribute("interest", vo.getInterest());
-					
+					List<YtubeVO> imglist = Yservice.imgOne(vo.getInterest());
 					if(vo.getInterest().length() >= 3) {
 						session.setAttribute("interest", vo.getInterest().substring(0,2)); 
 					}
 					//Interest에 따른 Ytube Image 출력 
-					do {
-						String subscribe = imglist.get(listNum).getSubscribe();
-						session.setAttribute("img"+i, imglist.get(listNum).getImage());
-						session.setAttribute("name"+i, imglist.get(listNum).getName());
-						
-						if(subscribe.substring(subscribe.length()-4).equals('0'))
-				            session.setAttribute("subs"+i, subscribe.substring(0,3));
-				        else if(subscribe.substring(subscribe.length()-5).equals('0'))
-				            session.setAttribute("subs"+i, subscribe.substring(0,4));
-				        else
-				            session.setAttribute("subs"+i, subscribe.substring(0,2));
-						i++; 
-						listNum++;
-					}while (i <= 3);
-					
+					mv.addObject("list", imglist);
 					mv.setViewName("home");
 				}else {
-					session.setAttribute("interest", vo.getInterest()); 
+					List<YtubeVO>imglist = Yservice.imgOne("운동");
+					mv.addObject("list", imglist);
 					mv.setViewName("home");
 				}
 			}else {
 				mv.setViewName("member/login");
 			}
 		}else { 
+			
 			mv.setViewName("member/login");
 		}
 		return mv;
 	}
 	
+	
 	//logout control
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpServletRequest request, ModelAndView mv) {
 		request.getSession().invalidate();
+		List<YtubeVO>imglist = Yservice.imgOne("운동");
+		mv.addObject("list", imglist);
 		mv.setViewName("home");
 		return mv;
 	}
@@ -216,6 +205,20 @@ public class MemberController{
 		int result = Mservice.idCheck(vo.getId());//중복아이디 있으면 1, 없으면 0
 		return result;
 			
+	}
+	
+	@RequestMapping(value = "/catel")
+	public ModelAndView catel(ModelAndView mv, HttpServletResponse response,
+							  @RequestParam("value")String value) {
+		
+		response.setContentType("text/html; charset=UTF-8");
+		list.clear();
+		for(int i = 0; i<3; i++)
+		list.add(Yservice.imgOne(value).get(i));
+		
+		mv.addObject("result",list);
+		mv.setViewName("jsonView");
+		return mv;
 	}
 
 }

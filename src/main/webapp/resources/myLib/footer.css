@@ -1,0 +1,116 @@
+@charset "UTF-8";
+footer {
+	height: 33rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid var(--light-gray);
+}
+
+footer > .footer_container {
+	width: 130rem;
+	height: 23.9rem;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+footer > .footer_container > .mine_about {
+	width: 46.2rem;
+	display: flex;
+	justify-content: space-between;
+	margin-right: 18.8rem;
+}
+
+footer > .footer_container > .mine_about > h1 {
+	font-size: 3.2rem;
+	margin-right: 5rem;
+	font-weight: bold;
+	color: var(--manatee);
+}
+
+footer > .footer_container > .mine_about > p {
+	width: 22.3rem;
+	height: 11.9rem;
+	font-size: 1.4rem;
+	color: var(--manatee);
+}
+
+footer > .footer_container > .team_about {
+	width: 30rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+footer > .footer_container > .team_about > h1 {
+	width: 15.6rem;
+	font-size: 3.2rem;
+	font-weight: bold;
+	color: var(--manatee);
+}
+
+.team_about > .team_dev {
+	width: 9.7rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+
+.team_about > .team_dev > .dev_left {
+	display: flex;
+	flex-direction: column;
+	margin-right: 3rem;
+}
+
+.team_about > .team_dev > .dev_right {
+	display: flex;
+	flex-direction: column;
+}
+
+.team_about > .team_dev > .dev_left > span {
+	width: 3.7rem;
+	height: 1.7rem;
+	font-size: 1.4rem;
+	margin-bottom: 0.8rem;
+	font-weight: bold;
+	color: var(--manatee);
+}
+
+.team_about > .team_dev > .dev_right > span {
+	width: 3.7rem;
+	height: 1.7rem;
+	font-size: 1.4rem;
+	margin-bottom: 0.8rem;
+	font-weight: bold;
+	color: var(--manatee);
+}
+
+footer > .footer_container > .about_logo {
+	width: 20rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+footer > .footer_container > .about_logo > img {
+	width: 13.4rem;
+	height: 6.8rem;
+	margin-bottom: 3rem;
+}
+
+footer > .footer_container > .about_logo > h1 {
+	font-size: 2.4rem;
+	text-align: right;
+	color: var(--manatee);
+}
+
+footer > .footer_container > #line {
+	position: absolute;
+	bottom: 3.7rem;
+	width: 130rem;
+	height: 0.1rem;
+	opacity: 0.5;
+	background-color: var(--light-gray);
+}

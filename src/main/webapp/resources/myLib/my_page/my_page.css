@@ -1,0 +1,197 @@
+header {
+    width: 100%;
+    height: 9rem;
+    background-color: yellowgreen;
+}
+
+footer {
+    width: 100%;
+    height: 33rem;
+    background-color: yellowgreen;
+}
+
+/* My page Top */
+main {
+    width: 130rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+    margin: 6rem auto 8rem;
+}
+
+.profile_info {
+    width: 19.4rem;
+    height: 17.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+.user_detail {
+    width: 19.4rem;
+    height: 6.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+}
+
+.user_detail>span:nth-of-type(1) {
+    font-size: 3.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--eerie-black);
+}
+
+.user_detail>span:nth-of-type(2) {
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--manatee);
+}
+
+.btn12px {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    border: solid .1rem var(--black-coral);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    color: var(--black-coral);
+}
+
+/* My page bottom */
+.details_wrap {
+    width: 130rem;
+    flex-grow: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 6rem;
+}
+
+/* 관심있는 카테고리 */
+.categories_strip {
+    width: 47rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 6rem 6rem;
+    border-radius: 1rem;
+    background-color: var(--cultured);
+}
+
+.categories_strip>span:nth-of-type(1) {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--manatee);
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.item_wrap {
+    width: 16rem;
+    height: 16rem;
+    display: flex;
+    flex: 0 0 calc(50%-3rem); /* 관심사 개수가 홀수일 때 중앙정렬 */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .7rem;
+    padding: 2.5rem 3.8rem;
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 2rem 0 rgba(51, 51, 255, 0.04);
+    background-color: var(--white);
+
+}
+
+.item_wrap span {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--han-purple);
+}
+
+/* 내 정보 상세 */
+.info_details {
+    width: 77rem;
+    height: 49.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 5rem 6rem 6rem;
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 2rem 0 rgba(28, 29, 33, 0.04);
+    background-color: var(--white);
+}
+
+.heading {
+    width: 30.8rem;
+    height: 7.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.heading>span:nth-of-type(1) {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: var(--eerie-black);
+}
+
+.heading>span:nth-of-type(2) {
+    font-size: 1.8rem;
+    color: var(--manatee);
+}
+
+.result_area {
+    width: 65rem;
+    height: 27rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 6rem;
+    padding: 4rem 5rem;
+    border-radius: 1rem;
+    background-color: var(--cultured);
+}
+
+.labels {
+    width: 6.3rem;
+    height: 19rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.labels span {
+    font-size: 1.8rem;
+    color: var(--manatee);
+}
+
+.my_info {
+    width: 21.1rem;
+    height: 19rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--eerie-black);
+}

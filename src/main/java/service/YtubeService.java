@@ -10,7 +10,7 @@ public interface YtubeService {
 	
 	List<YtubeVO> imgOne(String string);
 	List<YtubeVO> selectList();
-	List<YtubeVO> category(String interest);
+	List<YtubeVO> intera(String interest);
 	List<YtubeVO> detail (String string);
 	List<YtubeVO> interlist (HashMap<String,String> map);
 	

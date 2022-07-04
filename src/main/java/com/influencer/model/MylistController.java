@@ -37,7 +37,7 @@ public class MylistController {
 	
 	// mylist 페이지 이동 및 object로 선택한 list를 담음
 	@RequestMapping(value = "/mylistf")
-	public ModelAndView rankf(ModelAndView mv,HttpServletRequest request) {
+	public ModelAndView mylistf(ModelAndView mv,HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
 			mv.addObject("list",MYservice.selectList((String)session.getAttribute("Login_Id")));

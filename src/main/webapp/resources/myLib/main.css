@@ -16,7 +16,6 @@
 /* now_popularity (지금 인기있는 인플루언서) */
 
 body {
-	overflow:hidden;
 	background-color: var(--ghost-white);
 }
 
@@ -60,16 +59,17 @@ main > .now_popularity > .now_left > .now_controll {
 }
 
 .now_left > .now_controll > .now_arrow > .arrow {
-	width: 3.5rem;
-	height: 3.5rem;
+	width: 5rem;
+	cursor: pointer;
+	height: 5rem;
 }
 
-.now_left > .now_controll > .now_arrow > .arrow_left {
+.now_left > .now_controll > .now_arrow > .now_arrow_left {
 	margin-right: 2rem;
 	transform: rotate(180deg);
 }
 
-.now_left > .now_controll > .now_arrow > .arrow_active {
+.now_left > .now_controll > .now_arrow > .now_arrow_active {
 	opacity: 0.5;
 }
 
@@ -189,6 +189,62 @@ main > .now_popularity > .now_right > .pop_card > .pop_text {
 .increase > .main_banner > h1 > #increase_main {
 	font-weight: bold;
 	color: var(--han-purple);
+}
+
+/* Swiper */
+.swiper2 {
+	width: 100%;
+	background-color: red;
+	overflow: hidden;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+	display: none;
+}
+
+.category {
+	position: relative;
+}
+
+.category > .category_list > .swiper-slide > input {
+	display: none;
+}
+
+.category_list > .swiper-slide > label {
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.category_list > .swiper-slide > label:hover {
+	transform: scale(1.1);
+}
+
+.category_list > .swiper-slide > label > p {
+	margin-top:15px;
+	text-align: center;
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+
+.active_item {
+	color: var(--han-purple);
+}
+
+.arrow_left {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	transform: rotate(180deg);
+	width: 5rem;
+	height: 5rem;
+}
+
+.arrow_right {
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	width: 5rem;
+	height: 5rem;
 }
 
 .increase > .main_banner > h1 > span {

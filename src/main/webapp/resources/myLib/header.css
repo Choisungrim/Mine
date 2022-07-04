@@ -45,7 +45,13 @@
 	display: flex;
 	align-items: center;
 }
-
+header> .nav > nav{
+	width: 130rem;
+	margin: 0 auto;
+	height: 9rem;
+	display: flex;
+	align-items: center;
+}
 .nav_left {
 	width: 65rem;
 	display: flex;

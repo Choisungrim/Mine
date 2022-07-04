@@ -1,12 +1,18 @@
 package com.influencer.model;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,6 +33,8 @@ public class RankingController {
 	@Autowired
 	MylistService MYservice;
 	
+	private static final Logger logger = LoggerFactory.getLogger(RankingController.class);
+	
 	//rank 페이지 이동시 상위 3개 와 모든 인플루언서의 obj (틀을 그렇게 짜서 이렇게 했어요)
 	@RequestMapping(value = "/rankf")
 	public ModelAndView rankf(ModelAndView mv,HttpServletRequest request,YtubeVO vo, HttpServletResponse response) {
@@ -45,14 +53,18 @@ public class RankingController {
 	}
 	
 	// 카테고리별 인플루언서 출력 // 모든 인플루언서 출력 시 찜한 상태 확인
-	@RequestMapping(value = "/category")
+	@RequestMapping(value = "/category",method = RequestMethod.GET)
 	public ModelAndView category(ModelAndView mv,HttpServletRequest request,MemberVO vo
 								 ,HttpServletResponse response
 								 ,@RequestParam("value")String value) {
+		
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
-			mv.addObject("category",Yservice.category(value));
+			List<YtubeVO> list = Yservice.intera(value);
+			System.out.println(value);
+			logger.info("value : {}",value);
+			mv.addObject("intera",list);
 			mv.addObject("mylist",MYservice.selectList((String)session.getAttribute("Login_Id")));
 			mv.setViewName("jsonView");
 		}else
