@@ -59,20 +59,19 @@ public class MemberController{
 		HttpSession session = request.getSession(false);
 		String id = (String) session.getAttribute("id");
 		String interest ="";
-		HashMap<String,String> aa =new HashMap<String,String>();
+		HashMap<String,String> map =new HashMap<String,String>();
 
-		aa.put("id", id);
+		map.put("id", id);
 		for (int i=0 ; i<chbox.size() ; i++ ) {
 			if(i!=chbox.size()-1)
 				interest +=chbox.get(i)+",";
 			else
 				interest +=chbox.get(i);
 		}
-		aa.put("interest",interest);
-		Mservice.update(aa);
+		map.put("interest",interest);
+		Mservice.update(map);
 		mv.setViewName("/");
 		return mv;
-		
 	}
 	
 	//login
@@ -97,7 +96,7 @@ public class MemberController{
 					session.setAttribute("interest", vo.getInterest());
 					List<YtubeVO> imglist = Yservice.imgOne(vo.getInterest());
 					if(vo.getInterest().length() >= 3) {
-						session.setAttribute("interest", vo.getInterest().substring(0,2)); 
+						session.setAttribute("interest", vo.getInterest().substring(0,2));
 					}
 					//Interest에 따른 Ytube Image 출력 
 					mv.addObject("list", imglist);

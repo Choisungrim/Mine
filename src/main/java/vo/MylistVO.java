@@ -5,6 +5,8 @@ public class MylistVO {
 	private String id;
 	private String name;
 	private String regdate;
+	private int age;
+	private int total;
 	
 	public int getSeq() {
 		return seq;

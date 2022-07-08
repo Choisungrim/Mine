@@ -35,7 +35,8 @@ value.forEach(el=>{
 					    <div class="about_youtuber">
 					        <h1>${list.list[i].name}</h1>
 					        <!--이름-->
-					        <h3>구독자 ${list.list[i].subscribe} 명</h3>
+					        <h3>구독자 ${list.list[i].subscribe.substring(0,list.list[i].subscribe.length-4)} 만명 </h3>
+
 					        <!-- 구독자 -->
 					        <span id="interest">#${list.list[i].job}</span>
 					        <!-- 관심사 -->
@@ -87,7 +88,7 @@ function init(){
 			    <div class="about_youtuber">
 			        <h1>${list.list[i].name}</h1>
 			        <!--이름-->
-			        <h3>구독자 ${list.list[i].subscribe} 명</h3>
+			        <h3>구독자 ${list.list[i].subscribe.substring(0,list.list[i].subscribe.length-4)} 만명 </h3>
 			        <!-- 구독자 -->
 			        <span id="interest">#${list.list[i].job}</span>
 			        <!-- 관심사 -->

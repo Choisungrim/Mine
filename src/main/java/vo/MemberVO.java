@@ -11,8 +11,6 @@ public class MemberVO {
 	private String color;
 	private String interest;
 	
-	
-	
 	public String getId() {
 		return id;
 	}
@@ -66,4 +64,6 @@ public class MemberVO {
 		return "MemberVO [id=" + id + ", password=" + password + ", email=" + email + ", nick_name=" + nick_name
 				+ ", birth=" + birth + ", gender=" + gender + ", color=" + color + ", interest=" + interest + "]";
 	}
+	
+	
 }

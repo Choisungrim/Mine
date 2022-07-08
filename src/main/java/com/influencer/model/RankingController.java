@@ -1,7 +1,12 @@
 package com.influencer.model;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import service.MylistService;
 import service.YtubeService;
+import vo.MageCriVO;
 import vo.MemberVO;
+import vo.MylistVO;
 import vo.YtubeVO;
 
 /**
@@ -33,14 +40,15 @@ public class RankingController {
 	@Autowired
 	MylistService MYservice;
 	
-	private static final Logger logger = LoggerFactory.getLogger(RankingController.class);
-	
 	//rank 페이지 이동시 상위 3개 와 모든 인플루언서의 obj (틀을 그렇게 짜서 이렇게 했어요)
 	@RequestMapping(value = "/rankf")
 	public ModelAndView rankf(ModelAndView mv,HttpServletRequest request,YtubeVO vo, HttpServletResponse response) {
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
+			List<MageCriVO> list = new ArrayList<>();
+			list.addAll(MYservice.poplevel());
+			mv.addObject("ingi",list);		
 			mv.addObject("allytuber",Yservice.selectList());
 			mv.addObject("oytuber",Yservice.selectList().get(0));
 			mv.addObject("tytuber",Yservice.selectList().get(1));
@@ -62,8 +70,6 @@ public class RankingController {
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("Login_Id") != null) {
 			List<YtubeVO> list = Yservice.intera(value);
-			System.out.println(value);
-			logger.info("value : {}",value);
 			mv.addObject("intera",list);
 			mv.addObject("mylist",MYservice.selectList((String)session.getAttribute("Login_Id")));
 			mv.setViewName("jsonView");

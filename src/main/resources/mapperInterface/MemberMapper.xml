@@ -36,4 +36,6 @@
 	<update id="update" parameterType="hashmap">
 	update member set interest=#{interest} where id=#{id}
 	</update>
+	
+	
 </mapper>

@@ -1,12 +1,15 @@
 package service;
 
 import java.util.HashMap;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mapperInterface.MylistMapper;
+import vo.MageCriVO;
+import vo.MemberVO;
 import vo.MylistVO;
 import vo.YtubeVO;
 
@@ -26,6 +29,10 @@ public class MylistServiceimpl implements MylistService {
 	@Override
 	public int mydelete(HashMap<String, String> map) {
 		return mapper.mydelete(map);
+	}
+	@Override
+	public List<MageCriVO> poplevel() {
+		return mapper.poplevel();
 	}
 	
 }

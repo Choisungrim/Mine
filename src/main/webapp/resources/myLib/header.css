@@ -64,20 +64,25 @@ header> .nav > nav{
 	align-items: center;
 	font-size: 2rem;
 }
+.nav_left > h1 > a{
+	display: flex;
+    align-items: center;
+}
 
-.nav_left > h1 > img {
+
+.nav_left > h1 > a >img {
 	width: 6.7rem;
 	height: 3.4rem;
 	object-fit: contain;
 }
 
-.nav_left > h1 > #mine {
+.nav_left > h1 > a >#mine {
 	margin-left: 1.3rem;
 	color: var(--han-purple);
 	font-weight: bold;
 }
 
-.nav_left > h1 > #mine > span {
+.nav_left > h1 > a > #mine > span {
 	font-weight: normal;
 	font-size: 1.9rem;
 	color: var(--black-coral);

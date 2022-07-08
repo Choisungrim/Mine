@@ -146,7 +146,7 @@
 								         ${lista.subscribe.substring(0,lista.subscribe.length()-4)}만명
 							        </span>
 									<div class="pop_hashtag">
-										<span>#운동</span> <span>#패션</span> <span>#여행</span>
+										<span>#운동</span> 
 									</div>
 								</div>
 							</div>
@@ -162,7 +162,7 @@
 								         ${lista.subscribe.substring(0,lista.subscribe.length()-4)}만명
 							        </span>
 									<div class="pop_hashtag">
-										<span>#${interest}</span> <span>#패션</span> <span>#여행</span>
+										<span>#${interest}</span>
 									</div>
 								</div>
 							</div>

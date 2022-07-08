@@ -42,7 +42,7 @@ public class HomeController {
 		
 		List<YtubeVO> imglist = Yservice.imgOne("운동");
 		mv.addObject("list", imglist);
-		mv.setViewName("/");
+		mv.setViewName("home");
 		return mv;
 	}
 }

@@ -16,4 +16,10 @@
   	<delete id="mydelete">
   	delete from mylist where id = #{id} and name = #{name}
   	</delete>
+  	
+  	<select id="poplevel" resultType="vo.MageCriVO" parameterType="java.lang.String">
+	select distinct t1.name, t1.age, t1.count from aa as t1, (select name, max(count)as max from aa group by name)as t2
+              where t1.name = t2.name and t1.count = t2.max
+              order by count desc;
+	</select>
   </mapper>
